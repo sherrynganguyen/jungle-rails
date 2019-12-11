@@ -16,7 +16,13 @@
       Details &raquo;
     <% end %>
   </footer>
-
+  <% if product.quantity == 0 %>
+    <aside class="soldout">
+      <p>SOLD OUT!</p>
+    </aside>
+  <% else %>
+      <p></p>
+  <% end %>
   <aside class="price">
     <%= number_to_currency(product.price, :unit => "$") %>
   </aside>
