@@ -2,12 +2,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # raise @order.inspect
     @line_items = @order.line_items
-    # raise @line_items.inspect
     @products = @line_items.map { |line_item| Product.find(line_item.product_id) }
-    # raise @products.inspect
-    # raise @order1.inspect
   end
 
   def create
