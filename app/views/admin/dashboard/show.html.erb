@@ -1,4 +1,24 @@
 <h1>Inventory List</h1>
-<p>Total products: <%= @product %></p>
-<p>Total category: <%= @category %></p>
-<%= link_to 'Products Page', admin_products_path %>
+<p></p>
+<p></p>
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Products</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @product %></td>
+      <td><%= @category %></td>
+    </tr>
+    <tr>
+      <td><button type="button" class="btn btn-info"><%= link_to 'Products Page', admin_products_path %></button></td>
+      <td><button type="button" class="btn btn-info"><%= link_to 'Products Page', admin_products_path %></button></td>
+    </tr>
+  </tbody>
+</table>
+
