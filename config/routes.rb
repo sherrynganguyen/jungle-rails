@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   
   resources :about, only: [:index]
 
+  namespace :users do
+
+    resources :signup, only: [:index, :new, :create]
+    resources :signin, only: [:index, :new]
+  end
+
   resource :cart, only: [:show] do
     post   :add_item
     post   :remove_item
