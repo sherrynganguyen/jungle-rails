@@ -54,9 +54,9 @@
          </ul>
         </li>
         <% if current_user %>
-          Signed in as <%= current_user.firstname %> <%= current_user.lastname %> | <%= link_to "Logout", '/logout' %>
+          Signed in as <%= current_user.firstname %> <%= current_user.lastname %> | <%= link_to 'Logout', session_destroy_path(:session_id) %>
         <% else %>
-          <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+          <%= link_to 'Login', [:new, :session] %> | <%= link_to 'Signup', [:new, :user] %>
         <% end %>
         <li>
           <%= link_to cart_path do %>
