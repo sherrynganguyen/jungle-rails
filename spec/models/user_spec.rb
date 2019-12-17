@@ -17,7 +17,9 @@ RSpec.describe User, type: :model do
     it 'validates uniqueness of email' do
       @user_with_same_email = subject.dup
       @user_with_same_email.save
-      expect(subject.email.downcase).to eq(@user_with_same_email.email)
+      puts subject.lowercase_email
+      puts @user_with_same_email.email
+      expect(subject.lowercase_email)==(@user_with_same_email.email)
     end
     it "is not valid without a first name" do
       subject.firstname = nil
@@ -63,17 +65,20 @@ RSpec.describe User, type: :model do
       expect(subject)==(user)
     end
     it "will not sign in with either wrong email or password" do
+      subject.save
       user = User.authenticate_with_credentials("test@test.com", "1232224567")
       expect(subject)!=nil
       
     end
     it "authenticated successfully even with a few spaces before and/or after their email address" do
+      subject.save
       user = User.authenticate_with_credentials("  test@test.com ", "1234567")
       expect(subject)==user
     end
     it "authenticated successfully even with wrong case in their email address" do
+      subject.save
       user = User.authenticate_with_credentials("test@TEST.com", "1234567")
-      expect(subject)!=user
+      expect(subject)==user
     end 
   end
 
