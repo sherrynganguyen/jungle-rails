@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
     :firstname => "Pikachu",
     :lastname => "Pokemon",
     :email => "test@test.com",
-    :password => "1234567",
-    :password_confirmation => "1234567"
+    :password => nil,
+    :password_confirmation => nil
     )
   }
   
