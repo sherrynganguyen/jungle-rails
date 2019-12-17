@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   subject { described_class.new(
     :firstname => "Pikachu",
     :lastname => "Pokemon",
-    :email => "test@test.com",
+    :email => "TEST@TEST.com",
     :password => "1234567",
     :password_confirmation => "1234567"
     )
@@ -17,10 +17,10 @@ RSpec.describe User, type: :model do
     it 'validates uniqueness of email' do
       @user_with_same_email = subject.dup
       @user_with_same_email.save
-      expect(subject.email).to eq(@user_with_same_email.email)
+      expect(subject.email.downcase).to eq(@user_with_same_email.email)
     end
     it "is not valid without a first name" do
-      subject.firstname = ""
+      subject.firstname = nil
       expect(subject).to_not be_valid
       expect(subject.errors.full_messages).to include("Firstname can't be blank")
     end
@@ -57,6 +57,12 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
+    it "returns an instance of the user when email and password are correct" do
+
+    end
+    it "returns nil when either email or password is incorrect" do
+      
+    end 
   end
 
 end
