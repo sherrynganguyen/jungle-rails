@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
   
   describe 'Validations' do
     it "should have same password and password confirmation" do
-      expect(subject.password).to be(subject.password_confirmation)
+      expect(subject.password).to eq(subject.password_confirmation)
     end
   end
 
