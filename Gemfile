@@ -48,6 +48,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'phantomjs'
   gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
