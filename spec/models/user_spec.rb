@@ -34,7 +34,11 @@ RSpec.describe User, type: :model do
       expect(subject).to_not be_valid
       expect(subject.errors.full_messages).to include("Email can't be blank")
     end
-
+    it "is not valid without a short password" do
+      subject.password = "123"
+      expect(subject).to_not be_valid
+      expect(subject.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+    end
   end
 
   describe '.authenticate_with_credentials' do
