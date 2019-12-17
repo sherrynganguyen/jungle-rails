@@ -57,11 +57,23 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    it "returns an instance of the user when email and password are correct" do
-
+    it "signs in with correct email and password " do
+      subject.save
+      user = User.authenticate_with_credentials("TEST@TEST.COM", "1234567")
+      expect(subject)==(user)
     end
-    it "returns nil when either email or password is incorrect" do
+    it "will not sign in with either wrong email or password" do
+      user = User.authenticate_with_credentials("test@test.com", "1232224567")
+      expect(subject)!=nil
       
+    end
+    it "authenticated successfully even with a few spaces before and/or after their email address" do
+      user = User.authenticate_with_credentials("  test@test.com ", "1234567")
+      expect(subject)==user
+    end
+    it "authenticated successfully even with wrong case in their email address" do
+      user = User.authenticate_with_credentials("test@TEST.com", "1234567")
+      expect(subject)!=user
     end 
   end
 

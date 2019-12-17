@@ -12,4 +12,15 @@ class User < ActiveRecord::Base
     self.email.downcase!
   end
 
+  def self.authenticate_with_credentials(email, password)
+    user = User.find_by_email(email)
+    if user && user.authenticate(password)
+      # success logic, log them in
+      user
+    else
+      # failure, render login form
+      nil
+    end
+  end
+
 end
