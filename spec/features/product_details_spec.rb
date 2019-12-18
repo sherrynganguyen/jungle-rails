@@ -14,19 +14,20 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
   end
 
   scenario "Naviagate from Home Page to Product Details page" do
+    #ACT
     visit root_path
     page.first('article header').click
     find('.product-detail')
-    puts page.html
+    #DEBUG & VERIFY
     sleep(0.1) and save_screenshot ("product_details.png") #add 0.1ms sleep time in order to have photo loaded
     expect(page).to have_selector '.product-detail'
-    save_screenshot ("test.png")
   end
   scenario "Naviagate from Home Page to Product Details page" do
+    #ACT
     visit root_path
     find_link("Details »", match: :first).click
     find('.product-detail')
-    puts page.html
+    #DEBUG & VERIFY
     save_screenshot ("product_details1.png")
     expect(page).to have_selector '.product-detail'
   end

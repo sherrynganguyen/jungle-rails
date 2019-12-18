@@ -1,10 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
-
+RSpec.feature "AddToCarts", type: :feature , js: true do
   before :each do
     @category = Category.create! name: 'Apparel'
-
     10.times do |n|
       @category.products.create!(
         name:  Faker::Hipster.sentence(3),
@@ -19,10 +17,11 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
   scenario "They see all products" do
     # ACT
     visit root_path
+    click_button("Add", match: :first)
 
     # DEBUG / VERIFY
-    save_screenshot("product_index.png")
-    expect(page).to have_css 'article.product', count: 10
+    save_screenshot("add_to_cart.png")
+    expect(page).to have_text 'My Cart (1)'
   end
 
 end
