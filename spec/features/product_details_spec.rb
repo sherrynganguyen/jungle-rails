@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.feature "ProductDetails", type: :feature, js: true do
   before :each do
     @category = Category.create! name: 'Apparel'
@@ -16,10 +15,17 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
   # product = Product.find(product.id)
 
   scenario "Naviagate from Home Page to Product Details page" do
-    visit '/products/'
-    page.all('article header')[1].click
-    expect(page).to have_selector '.product-detail'
+    visit root_path
+    page.first('article header').click_on
+    find('.product-detail')
     save_screenshot ("product_details.png")
+    expect(page).to have_selector '.product-detail'
   end
-
+  scenario "Naviagate from Home Page to Product Details page" do
+    visit root_path
+    find_link("Details »", match: :first).click
+    find('.product-detail')
+    save_screenshot ("product_details1.png")
+    expect(page).to have_selector '.product-detail'
+  end
 end
