@@ -3,6 +3,11 @@
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
 
+## Final Product
+
+![alt tag](/docs/jungle.gif)
+
+
 ## Setup
 
 1. Run `bundle install` to install dependencies
